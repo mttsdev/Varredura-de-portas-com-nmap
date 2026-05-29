@@ -22,15 +22,29 @@ O fluxo técnico dessa varredura segue a seguinte mecânica:
 ### 2. Análise do `auth.log`
 Esse encerramento abrupto gera um padrão muito específico no arquivo `/var/log/auth.log`. O monitoramento desses logs locais revelou com precisão o mapeamento realizado, evidenciando a identificação da **porta 22 (SSH)** e a tentativa de fingerprinting do serviço.
 
+![Descrição da imagem](assets/auth.log.jpeg)
+
 ---
 
 ## Relevância para Detecção e Resposta (Cyber Threat Intelligence)
 
 Compreender a engrenagem por trás de um scan de portas é vital para analistas de SOC. Para um atacante, o mapeamento de portas e a descoberta de versões exatas de serviços representam a fase de **Reconhecimento**. 
 
+![Descrição da imagem](assets/version--p-22.jpeg)
+
 A identificação bem-sucedida de um serviço como o SSH abre margem para:
 * Busca por **CVEs** conhecidas em versões desatualizadas.
 * Ataques de **Brute Force** direcionados.
 * Exploração de falhas estruturais ou vazamentos de chaves de autenticação.
 
-A assinatura identificada neste laboratório serve como base técnica para a criação de **regras de correlação e alertas no SIEM**, permitindo bloquear ou isolar o endereço IP do scanner antes que a fase de exploração seja iniciada.
+### 3. Verificação de Brute Force no SIEM depois da descoberta da versão do SSH
+
+Ao simular um Brute force, foi verificado no SIEM o total de tentativas executadas:
+
+![Descrição da imagem](assets/count-brute-force.jpeg)
+
+E por fim, o gráfico para uma leitura visual mais fácil do que foi ocorrido:
+
+![Descrição da imagem](assets/grafico.jpeg)
+
+Com isso, este laboratório mostra que deve estar atento às versões dos dispositivos e as vulnerabilidades mais conhecidas, além de regras de correlação e alertas no SIEM.
