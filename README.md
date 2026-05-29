@@ -33,8 +33,8 @@ Compreender a engrenagem por trás de um scan de portas é vital para analistas 
 ![Identificação da versão do SSH](assets/version--p-22.jpeg)
 
 A identificação bem-sucedida de um serviço exposto como o SSH abre margem para:
-* Busca por **CVEs (Common Vulnerabilities and Exposures)** conhecidas em versões desatualizadas.
-* Ataques de **Força Bruta (Brute Force)** direcionados.
+* Busca por **CVEs** conhecidas em versões desatualizadas.
+* Ataques de **Brute Force** direcionados.
 * Exploração de falhas estruturais ou vazamentos de chaves de autenticação.
 
 ### 3. Correlação e Verificação de Brute Force no SIEM
