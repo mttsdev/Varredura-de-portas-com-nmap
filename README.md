@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O objetivo principal deste laboratório foi executar uma varredura de rede intencionalmente agressiva contra um alvo Linux, analisar o comportamento dos pacotes diretamente no arquivo de log local (`auth.log`) e compreender a assinatura deixada por esse tráfego antes de centralizar e correlacionar a visibilidade em um SIEM (Security Information and Event Management).
+O objetivo principal deste laboratório foi executar uma varredura de rede intencionalmente agressiva contra um alvo Linux, analisar o comportamento dos pacotes diretamente no arquivo de log local (`auth.log`) e compreender a assinatura deixada por esse tráfego antes de centralizar e correlacionar a visibilidade em um SIEM.
 
 Inverter a perspectiva — estudando o impacto no host de destino antes de construir as regras de correlação — é fundamental para compreender o ruído real que as ferramentas de varredura geram nos sistemas operacionais.
 
@@ -26,7 +26,7 @@ Esse comportamento anômalo (conexão seguida de reset imediato) gera um padrão
 
 ---
 
-## Relevância para Detecção e Resposta (Blue Team / SOC)
+## 3. Relevância para Detecção e Resposta para SOC
 
 Compreender a engrenagem por trás de um scan de portas é vital para analistas de SOC. Para um atacante, o mapeamento de portas e a descoberta de versões exatas de serviços (banner grabbing) representam a fase de **Reconhecimento** dentro do Cyber Kill Chain. 
 
