@@ -1,4 +1,4 @@
-# Análise de Varredura de Portas com Nmap e Visualização em SIEM
+# Análise de Varredura de Portas com Nmap, Brute Force e Visualização em SIEM
 
 ## Descrição do Projeto
 
@@ -11,7 +11,7 @@ Inverter a perspectiva — estudando o impacto no host de destino antes de const
 ## Execução e Análise Técnica
 
 ### 1. Varredura com Nmap (TCP Connect Scan)
-Para gerar uma assinatura nítida e de fácil detecção nos logs locais, utilizou-se a varredura do Nmap com a flag `-sT` (TCP Connect Scan). 
+Para gerar uma assinatura nítida e de fácil detecção nos logs locais, utilizou-se a varredura do Nmap com a flag `-sT`. 
 
 O fluxo técnico dessa varredura segue a seguinte mecânica:
 * **Three-Way Handshake Completo:** O scanner estabelece a conexão TCP completa (`SYN` ➡️ `SYN-ACK` ➡️ `ACK`) para validar se a porta está efetivamente aberta.
@@ -28,7 +28,7 @@ Esse comportamento anômalo (conexão seguida de reset imediato) gera um padrão
 
 ## 3. Relevância para Detecção e Resposta para SOC
 
-Compreender a engrenagem por trás de um scan de portas é vital para analistas de SOC. Para um atacante, o mapeamento de portas e a descoberta de versões exatas de serviços (banner grabbing) representam a fase de **Reconhecimento** dentro do Cyber Kill Chain. 
+Compreender a engrenagem por trás de um scan de portas é vital para analistas de SOC. Para um atacante, o mapeamento de portas e a descoberta de versões exatas de serviços representam a fase de **Reconhecimento** dentro do Cyber Kill Chain. 
 
 ![Identificação da versão do SSH](assets/version--p-22.jpeg)
 
@@ -37,12 +37,14 @@ A identificação bem-sucedida de um serviço exposto como o SSH abre margem par
 * Ataques de **Brute Force** direcionados.
 * Exploração de falhas estruturais ou vazamentos de chaves de autenticação.
 
-### 3. Correlação e Verificação de Brute Force no SIEM
+### 4. Correlação e Verificação de Brute Force no SIEM
 Após a fase de reconhecimento do cenário, foi simulado um ataque de força bruta contra o serviço SSH. Com os logs locais já centralizados no SIEM, foi possível criar regras de correlação para quantificar e monitorar a atividade maliciosa em tempo real.
 
 O painel abaixo exibe o volume total de tentativas de autenticação falhas executadas pelo atacante:
 
 ![Contagem de Brute Force no SIEM](assets/count-brute-force.jpeg)
+
+## 5. Transformando tentativas em um gráfico de pizza
 
 Para facilitar a triagem e o entendimento da linha do tempo do incidente pela equipe de resposta, os eventos foram plotados em um gráfico de quebra temporal, tornando visualmente evidente o pico de conexões anômalas:
 
